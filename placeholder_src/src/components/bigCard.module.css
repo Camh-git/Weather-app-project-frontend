@@ -17,6 +17,10 @@
     float: left;
     margin-left: 2.5vw;
   }
+  .forecast {
+    width: 16vw;
+    margin-left: 2vw;
+  }
 }
 .deleteCard img {
   float: right;
@@ -24,5 +28,8 @@
   margin-top: 50vh;
 }
 .bigCard__icon {
-  max-width: 10vw;
+  width: 10vw;
+  height: 15vh;
+  background-color: aliceblue;
+  border-radius: 50%;
 }
