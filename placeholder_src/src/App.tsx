@@ -1,3 +1,5 @@
+import React from "react";
+
 import WeatherCard from "./components/bigCard";
 
 function App() {
