@@ -1,0 +1,28 @@
+.bigWeatherCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid black;
+  border-radius: 10vw;
+  width: 80vw;
+  padding: 5vw;
+}
+/*desktop*/
+@media screen and (min-width: 720px) {
+  .bigWeatherCard {
+    border: 5px solid black;
+    border-radius: 2.5vw;
+    max-width: 20vw;
+    padding: 1vw;
+    float: left;
+    margin-left: 2.5vw;
+  }
+}
+.deleteCard img {
+  float: right;
+  margin-right: 5vw;
+  margin-top: 50vh;
+}
+.bigCard__icon {
+  max-width: 10vw;
+}

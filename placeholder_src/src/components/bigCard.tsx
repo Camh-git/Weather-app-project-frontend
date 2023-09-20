@@ -1,6 +1,7 @@
-import deleteIcon from "../assets/icons/close_black_24dp.svg";
+import deleteIcon from "../assets/app_icons/close_black_24dp.svg";
 import findDayName from "../functions/convertDayNumToName";
-//import styles from "./bigCard.module.css";
+import findWeatherIcon from "../functions/findWeatherIcon";
+import styles from "./bigCard.module.css";
 import { useState } from "react";
 
 const WeatherCard: React.FC = () => {
@@ -8,17 +9,21 @@ const WeatherCard: React.FC = () => {
 
   const [timezoneHours, setTimeZoneHours] = useState(0);
   const [timezoneMinutes, setTimeZoneMinutes] = useState(0);
-  const day = new Date();
+  const day = new Date(); //can probably be context
 
   return (
-    <div className="bigWeatherCard">
+    <div className={styles.bigWeatherCard}>
       <span className="deleteCard">
         <img src={deleteIcon} alt="Delete card" onClick={deleteCard} />
       </span>
       <h2>city</h2>
 
       <section className="bigCard__currentDisplay">
-        <img className="bigCard__icon" src={""} alt="weather icon" />
+        <img
+          className={styles.bigCard__icon}
+          src={findWeatherIcon("sleet")} //TODO: replace with api data
+          alt="weather icon"
+        />
         <h3 className="bigCard__temperature">Temperature°</h3>
       </section>
 
