@@ -1,3 +1,5 @@
+import React from "react";
+
 import deleteIcon from "../assets/app_icons/close_black_24dp.svg";
 import findDayName from "../functions/convertDayNumToName";
 import findWeatherIcon from "../functions/findWeatherIcon";
