@@ -5,7 +5,7 @@ import styles from "./bigCard.module.css";
 import { useState } from "react";
 
 const WeatherCard: React.FC = () => {
-  function deleteCard() {}
+  function deleteCard() { }
 
   const [timezoneHours, setTimeZoneHours] = useState(0);
   const [timezoneMinutes, setTimeZoneMinutes] = useState(0);
