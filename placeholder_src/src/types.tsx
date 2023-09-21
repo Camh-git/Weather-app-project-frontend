@@ -1,30 +1,30 @@
-export type WeatherShortDetails = {
-	high_air_temperature: number;
-	low_air_temperature: number;
-	symbol_code: string;
-};
-export type WeatherExtendedDetails = {
-	current_air_temperature: number; // celsius
+// export type WeatherShortDetails = {
+// 	high_air_temperature: number;
+// 	low_air_temperature: number;
+// 	symbol_code: string;
+// };
+export type WeatherDetails = {
+	current_air_temperature?: number; // celsius
 	high_air_temperature: number; // celsius
 	low_air_temperature: number; // celsius
-	wind_from_direction: number; // degrees - (0° is north, 90° east, etc.)
-	wind_speed: 9.6; // m/s
+	wind_from_direction?: number; // degrees - (0° is north, 90° east, etc.)
+	wind_speed?: number; // m/s
 	symbol_code: string;
 };
 export type LocalTime = {
-	year: 2023;
-	month: 9;
-	day: 16;
-	hour: 10;
-	minute: 39;
-	seconds?: 6;
-	milliSeconds?: 178;
-	dateTime?: "2023-09-16T10:39:06.1788227";
-	date?: "09/16/2023";
-	time?: "10:39";
-	timeZone?: "Europe/Riga";
-	dayOfWeek: "Saturday";
-	dstActive?: true;
+	year: number; //2023;
+	month: number; //9;
+	day: number; //16;
+	hour: number; //10;
+	minute: number; //39;
+	seconds?: number; //6;
+	milliSeconds?: number; //178;
+	dateTime?: string; //"2023-09-16T10:39:06.1788227";
+	date?: string; //"09/16/2023";
+	time?: string; //"10:39";
+	timeZone?: string; //"Europe/Riga";
+	dayOfWeek: string; //"Saturday";
+	dstActive?: boolean; //true;
 };
 export type WeatherSymbol =
 	| "clearsky_day"
@@ -110,17 +110,17 @@ export type WeatherSymbol =
 	| "heavysnowshowers_day"
 	| "heavysnowshowers_night"
 	| "heavysnowshowers_polartwilight";
-export type Location = {
+export type LocationDetails = {
 	name: string;
 	country: string;
 	admin: string; // calculated from admin1, admin2, admin3
 };
 export type LocationForecast = {
 	updated_at: string; //from properties.meta.updated_at
-	location: Location;
+	location: LocationDetails;
 	local_time: LocalTime;
-	current_day: WeatherExtendedDetails; // from current time til
-	timeseries: WeatherShortDetails[];
+	current_day: WeatherDetails; // from current time til
+	timeseries: WeatherDetails[];
 };
 // Initial data for frontend
 export const MockForecast: LocationForecast[] = [
