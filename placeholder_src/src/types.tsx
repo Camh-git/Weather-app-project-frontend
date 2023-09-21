@@ -114,6 +114,9 @@ export type LocationDetails = {
 	name: string;
 	country: string;
 	admin: string; // calculated from admin1, admin2, admin3
+	latitude?: number;
+	longititude?: number;
+	timezone?: string;
 };
 export type LocationForecast = {
 	updated_at: string; //from properties.meta.updated_at
