@@ -7,20 +7,13 @@
   width: 80vw;
   padding: 5vw;
 }
-/*desktop*/
-@media screen and (min-width: 720px) {
-  .bigWeatherCard {
-    border: 5px solid black;
-    border-radius: 2.5vw;
-    max-width: 20vw;
-    padding: 1vw;
-    float: left;
-    margin-left: 2.5vw;
-  }
-  .forecast {
-    width: 16vw;
-    margin-left: 2vw;
-  }
+.forecast {
+  width: 80vw;
+  margin-left: 20vw;
+  margin-top: 5vh;
+}
+.forecast__img {
+  width: 10vw;
 }
 .deleteCard img {
   float: right;
@@ -32,4 +25,24 @@
   height: 15vh;
   background-color: aliceblue;
   border-radius: 50%;
+}
+
+/*desktop*/
+@media screen and (min-width: 720px) {
+  .bigWeatherCard {
+    border: 5px solid black;
+    border-radius: 2.5vw;
+    max-width: 20vw;
+    padding: 1vw;
+    float: left;
+    margin-left: 2.5vw;
+  }
+  .forecast {
+    width: 18vw;
+    margin-left: 1vw;
+    margin-top: 5vh;
+  }
+  .forecast__img {
+    width: 5vw;
+  }
 }
