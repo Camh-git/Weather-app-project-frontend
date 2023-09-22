@@ -4,7 +4,7 @@ import deleteIcon from "../assets/app_icons/close_black_24dp.svg";
 import findDayName from "../functions/convertDayNumToName";
 import findWeatherIcon from "../functions/findWeatherIcon";
 import styles from "./bigCard.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MockForecast } from "../types";
 
 const WeatherCard: React.FC = () => {
@@ -13,9 +13,6 @@ const WeatherCard: React.FC = () => {
   //useeffect to get the api data
   const forecast = MockForecast;
 
-  //replace these 3 lines with api time data
-  const [timezoneHours, setTimeZoneHours] = useState(0);
-  const [timezoneMinutes, setTimeZoneMinutes] = useState(0);
   const day = new Date();
 
   return (
@@ -54,6 +51,7 @@ const WeatherCard: React.FC = () => {
               </td>
               <td>
                 <img
+                  className={styles.forecast__img}
                   src={findWeatherIcon(forecast[0].timeseries[0].symbol_code)}
                   alt="Prediction"
                 />
@@ -67,6 +65,7 @@ const WeatherCard: React.FC = () => {
               </td>
               <td>
                 <img
+                  className={styles.forecast__img}
                   src={findWeatherIcon(forecast[0].timeseries[1].symbol_code)}
                   alt="Prediction"
                 />
@@ -80,6 +79,7 @@ const WeatherCard: React.FC = () => {
               </td>
               <td>
                 <img
+                  className={styles.forecast__img}
                   src={findWeatherIcon(forecast[0].timeseries[2].symbol_code)}
                   alt="Prediction"
                 />
