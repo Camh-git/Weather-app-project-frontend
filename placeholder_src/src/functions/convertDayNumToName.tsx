@@ -1,5 +1,8 @@
 function findDayName(dayNum: number): string {
   let dayName: string = "Not found";
+  if (dayNum > 7) {
+    dayNum -= 7;
+  }
   switch (dayNum) {
     case 1:
       dayName = "Monday";
