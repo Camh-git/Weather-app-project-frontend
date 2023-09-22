@@ -12,25 +12,41 @@ const WeatherCard: React.FC = () => {
 
   //useeffect to get the api data
   const forecast = MockForecast;
+  //const[forecast,setForecast] = useState("")
+
+  useEffect(() => {
+    const fetchForcast = async () => {
+      const result = await fetch("url");
+      result.json().then((json) => {
+        //setForecast(json.body);
+        console.log(json);
+      });
+    };
+    fetchForcast();
+  }, []);
 
   const day = new Date();
 
   return (
     <div className={styles.bigWeatherCard}>
-      <span className="deleteCard">
+      <span className={styles.deleteCard}>
         <img src={deleteIcon} alt="Delete card" onClick={deleteCard} />
       </span>
-      <section className="bigCard__LocationDisplay">
+
+      <section className={styles.bigCard__LocationDisplay}>
         <h2>{forecast[0].location.name}</h2>
-        <h2>{forecast[0].location.country}</h2>
+        <h2 className={styles.bigCard__LocationDisplaySubtitle}>
+          {forecast[0].location.country}
+        </h2>
       </section>
 
-      <section className={styles.bigCard__icon}>
+      <section className={styles.bigCard__WeatherDisplay}>
         <img
           className={styles.bigCard__icon}
           src={findWeatherIcon(forecast[0].current_day.symbol_code)}
           alt="weather icon"
         />
+
         <h3 className="bigCard__temperature">
           {forecast[0].current_day.current_air_temperature}°
         </h3>
