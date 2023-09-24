@@ -1,0 +1,48 @@
+.bigWeatherCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+  padding: 5vw;
+  max-height: 100vh;
+}
+.addCard__h2 {
+  margin-top: 5vh;
+}
+.addCard__buttonDisplay {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  text-align: center;
+}
+.addCard__buttonDisplay img {
+  border: 5px solid black;
+  border-radius: 25%;
+  width: 30vw;
+  height: 30vw;
+  padding: 10vw;
+}
+.addCard__settingsBar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1vh;
+}
+.addCard_link {
+  text-decoration: none;
+  color: black;
+}
+@media screen and (min-width: 720px) {
+  .bigWeatherCard {
+    border: 5px solid black;
+    border-radius: 2.5vw;
+    max-width: 20vw;
+    padding: 1vw;
+    float: left;
+    margin-left: 2.5vw;
+  }
+  .addCard__buttonDisplay img {
+    width: 3vw;
+    height: 3vw;
+    padding: 2vw;
+  }
+}
