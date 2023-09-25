@@ -12,6 +12,7 @@ type Location = {
 };
 
 const WeatherCard: React.FC<Location> = (props: Location) => {
+
   function deleteCard() {} //placeholder
 
   //useeffect to get the api data
