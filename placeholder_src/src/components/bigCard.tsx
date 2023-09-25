@@ -7,22 +7,29 @@ import styles from "./bigCard.module.css";
 import { useState, useEffect } from "react";
 import { MockForecast } from "../types";
 
-const WeatherCard: React.FC = () => {
-  function deleteCard() {}
+type Location = {
+  Location: string;
+};
+
+const WeatherCard: React.FC<Location> = (props: Location) => {
+  function deleteCard() {} //placeholder
 
   //useeffect to get the api data
   const forecast = MockForecast;
   //const[forecast,setForecast] = useState("")
 
   useEffect(() => {
-    const fetchForcast = async () => {
-      const result = await fetch("url");
-      result.json().then((json) => {
+    const fetchForecast = async () => {
+      const result = await fetch(
+        "http://localhost:3000/weather/?cityName=London"
+      );
+      //console.log(result);
+      result.text().then((json) => {
         //setForecast(json.body);
         console.log(json);
       });
     };
-    fetchForcast();
+    fetchForecast();
   }, []);
 
   const day = new Date();
@@ -32,14 +39,12 @@ const WeatherCard: React.FC = () => {
       <span className={styles.deleteCard}>
         <img src={deleteIcon} alt="Delete card" onClick={deleteCard} />
       </span>
-
       <section className={styles.bigCard__LocationDisplay}>
         <h2>{forecast[0].location.name}</h2>
         <h2 className={styles.bigCard__LocationDisplaySubtitle}>
           {forecast[0].location.country}
         </h2>
       </section>
-
       <section className={styles.bigCard__WeatherDisplay}>
         <img
           className={styles.bigCard__icon}
@@ -47,15 +52,13 @@ const WeatherCard: React.FC = () => {
           alt="weather icon"
         />
 
-        <h3 className="bigCard__temperature">
+        <h3 id="bigCard__temperature">
           {forecast[0].current_day.current_air_temperature}°
         </h3>
       </section>
-
-      <h3 className="bigCard__time">
+      <h3 id="bigCard__time">
         {forecast[0].local_time.hour}:{forecast[0].local_time.minute}
       </h3>
-
       <section className={styles.forecast}>
         <table>
           <tbody>
