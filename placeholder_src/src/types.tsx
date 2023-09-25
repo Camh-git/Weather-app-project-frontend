@@ -3,6 +3,7 @@
 // 	low_air_temperature: number;
 // 	symbol_code: string;
 // };
+
 export type WeatherDetails = {
 	current_air_temperature?: number; // celsius
 	high_air_temperature: number; // celsius
@@ -110,6 +111,11 @@ export type WeatherSymbol =
 	| "heavysnowshowers_day"
 	| "heavysnowshowers_night"
 	| "heavysnowshowers_polartwilight";
+
+export type LocationName = {
+	name: 'London' | 'New York' | 'Tokyo' ;
+}
+
 export type LocationDetails = {
 	name: string;
 	country: string;
