@@ -16,18 +16,15 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
 
   //useeffect to get the api data
   const forecast = MockForecast;
-  //const[forecast,setForecast] = useState("")
+  const [state, setState] = useState();
 
   useEffect(() => {
     const fetchForecast = async () => {
       const result = await fetch(
-        "http://localhost:3000/weather/?cityName=London"
+        `http://localhost:3000/weather/?cityName=${props.Location}`
       );
-      //console.log(result);
-      result.text().then((json) => {
-        //setForecast(json.body);
-        console.log(json);
-      });
+      const data = await result.json();
+      console.log(data);
     };
     fetchForecast();
   }, []);
