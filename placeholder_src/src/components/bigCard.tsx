@@ -5,22 +5,15 @@ import findDayName from "../functions/convertDayNumToName";
 import findWeatherIcon from "../functions/findWeatherIcon";
 import styles from "./bigCard.module.css";
 import { useState, useEffect } from "react";
-import { MockForecast } from "../types";
-import { LocationDetails, LocationForecast } from "../types";
 
 type Location = {
   Location: string;
-};
-type weatherForecast = {
-  geoLocation: LocationDetails;
-  weatherInformation: LocationForecast;
 };
 //needs name, country, logo, temp, time, forecast
 const WeatherCard: React.FC<Location> = (props: Location) => {
   function deleteCard() {} //placeholder
 
   //Placeholder pile of state, will refactor into more sensible objects
-  //const forecast = MockForecast;
   const [name, setName] = useState("Loading...");
   const [country, setCountry] = useState("Loading...");
   const [icon, setIcon] = useState("Loading...");
