@@ -57,7 +57,7 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
       setCountry(data.geoLocation.country);
       setIcon(data.weatherInformation.current_day.symbol_code); //TODO: find where the current day symbol is
       setTemp(data.weatherInformation.current_day.current_air_temperature);
-      setTime(data.weatherInformation.current_day.time); //TODO: find actual time, only seems to be days
+      setTime(data.localTime.hour + ":" + data.localTime.minute); //TODO: find actual time, only seems to be days
       setForecast1(data.weatherInformation.timeseries[0]);
       setForecast2(data.weatherInformation.timeseries[1]);
       setForecast3(data.weatherInformation.timeseries[2]);
