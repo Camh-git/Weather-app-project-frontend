@@ -20,12 +20,14 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
   function deleteCard() {} //placeholder
 
   //Placeholder pile of state, will refactor into more sensible objects
-  const forecast = MockForecast;
+  //const forecast = MockForecast;
   const [name, setName] = useState("Loading...");
   const [country, setCountry] = useState("Loading...");
   const [icon, setIcon] = useState("Loading...");
   const [temp, setTemp] = useState("Loading...");
-  const [time, setTime] = useState("Loading...");
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
   const [forecast1, setForecast1] = useState({
     time: 0,
     high_air_temperature: 0,
@@ -57,7 +59,9 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
       setCountry(data.geoLocation.country);
       setIcon(data.weatherInformation.current_day.symbol_code);
       setTemp(data.weatherInformation.current_day.current_air_temperature);
-      setTime(data.localTime.hour + ":" + data.localTime.minute);
+      setMinutes(data.localTime.minute);
+      setHours(data.localTime.hour);
+      setSeconds(data.localTime.seconds);
       setForecast1(data.weatherInformation.timeseries[0]);
       setForecast2(data.weatherInformation.timeseries[1]);
       setForecast3(data.weatherInformation.timeseries[2]);
@@ -86,7 +90,10 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
         />
         <h3 id="bigCard__temperature">{temp}°</h3>
       </section>
-      <h3 id="bigCard__time">{time}</h3>
+      <h3 id="bigCard__time">
+        {hours}:{minutes < 9 && 0}
+        {minutes}
+      </h3>
       <section className={styles.forecast}>
         <table>
           <tbody>
