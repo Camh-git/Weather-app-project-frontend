@@ -8,7 +8,7 @@ function setBackgroundColour(hour: number) {
     backgroundColour = "#f0c987";
   } else if (hour > 18 && hour < 24) {
     //evening
-    backgroundColour = "#004346";
+    backgroundColour = "#9C7178";
   } else if (hour < 6) {
     //night
     backgroundColour = "#1E596F";

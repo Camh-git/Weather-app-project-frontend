@@ -6,6 +6,7 @@ import findWeatherIcon from "../functions/findWeatherIcon";
 import styles from "./bigCard.module.css";
 import { useState, useEffect } from "react";
 import setBackgroundColour from "../functions/getBackgroundColour";
+import setTextColour from "../functions/getTextColour";
 
 type Location = {
   Location: string;
@@ -81,7 +82,7 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
   return (
     <div
       className={styles.bigWeatherCard}
-      style={{ backgroundColor: setBackgroundColour(time.hours) }}
+      style={{ backgroundColor: setBackgroundColour(time.hours) , color: setTextColour(time.hours)}}
     >
       <span className={styles.deleteCard}>
         <img src={deleteIcon} alt="Delete card" onClick={deleteCard} />
