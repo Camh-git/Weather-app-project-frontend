@@ -13,14 +13,20 @@ type Location = {
 const WeatherCard: React.FC<Location> = (props: Location) => {
   function deleteCard() {} //placeholder
 
-  //Placeholder pile of state, will refactor into more sensible objects
-  const [name, setName] = useState("Loading...");
-  const [country, setCountry] = useState("Loading...");
-  const [icon, setIcon] = useState("Loading...");
-  const [temp, setTemp] = useState("Loading...");
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  //State used by the card
+  const [city, setLocation] = useState({
+    name: "Loading...",
+    country: "Loading...",
+  });
+  const [weather, setWeather] = useState({
+    icon: "Loading...",
+    temperature: "0",
+  });
+  const [time, setTime] = useState({
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
   const [forecast1, setForecast1] = useState({
     time: 0,
     high_air_temperature: 0,
@@ -48,13 +54,20 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
       );
       const data = await result.json();
       console.log(data);
-      setName(data.geoLocation.name);
-      setCountry(data.geoLocation.country);
-      setIcon(data.weatherInformation.current_day.symbol_code);
-      setTemp(data.weatherInformation.current_day.current_air_temperature);
-      setMinutes(data.localTime.minute);
-      setHours(data.localTime.hour);
-      setSeconds(data.localTime.seconds);
+      setLocation({
+        name: data.geoLocation.name,
+        country: data.geoLocation.country,
+      });
+      setWeather({
+        icon: data.weatherInformation.current_day.symbol_code,
+        temperature:
+          data.weatherInformation.current_day.current_air_temperature,
+      });
+      setTime({
+        hours: data.localTime.hour,
+        minutes: data.localTime.minute,
+        seconds: data.localTime.seconds,
+      });
       setForecast1(data.weatherInformation.timeseries[0]);
       setForecast2(data.weatherInformation.timeseries[1]);
       setForecast3(data.weatherInformation.timeseries[2]);
@@ -71,21 +84,24 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
       </span>
 
       <section className={styles.bigCard__LocationDisplay}>
-        <h2>{name}</h2>
-        <h2 className={styles.bigCard__LocationDisplaySubtitle}>{country}</h2>
+        <h2>{city.name}</h2>
+        <h2 className={styles.bigCard__LocationDisplaySubtitle}>
+          {city.country}
+        </h2>
       </section>
 
       <section className={styles.bigCard__WeatherDisplay}>
         <img
           className={styles.bigCard__icon}
-          src={findWeatherIcon(icon)}
+          src={findWeatherIcon(weather.icon)}
           alt="weather icon"
         />
-        <h3 id="bigCard__temperature">{temp}°</h3>
+        <h3 id="bigCard__temperature">{weather.temperature}°</h3>
       </section>
       <h3 id="bigCard__time">
-        {hours}:{minutes < 9 && 0}
-        {minutes}
+        {time.hours <= 9 && 0}
+        {time.hours}:{time.minutes <= 9 && 0}
+        {time.minutes}
       </h3>
       <section className={styles.forecast}>
         <table>
