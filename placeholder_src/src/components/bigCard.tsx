@@ -55,9 +55,9 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
       console.log(data);
       setName(data.geoLocation.name);
       setCountry(data.geoLocation.country);
-      setIcon(data.weatherInformation.current_day.symbol_code); //TODO: find where the current day symbol is
+      setIcon(data.weatherInformation.current_day.symbol_code);
       setTemp(data.weatherInformation.current_day.current_air_temperature);
-      setTime(data.localTime.hour + ":" + data.localTime.minute); //TODO: find actual time, only seems to be days
+      setTime(data.localTime.hour + ":" + data.localTime.minute);
       setForecast1(data.weatherInformation.timeseries[0]);
       setForecast2(data.weatherInformation.timeseries[1]);
       setForecast3(data.weatherInformation.timeseries[2]);
@@ -81,7 +81,7 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
       <section className={styles.bigCard__WeatherDisplay}>
         <img
           className={styles.bigCard__icon}
-          src={findWeatherIcon(forecast[0].current_day.symbol_code)}
+          src={findWeatherIcon(icon)}
           alt="weather icon"
         />
         <h3 id="bigCard__temperature">{temp}°</h3>
