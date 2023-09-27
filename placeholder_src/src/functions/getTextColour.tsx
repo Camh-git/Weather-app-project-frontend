@@ -3,7 +3,7 @@ function setTextColour(hour: number) {
   if (hour > 6 && hour < 18) {
     //morning and afternoon
     textColour = "#000000";
-  } else if (hour > 18 && hour < 24) {
+  } else if (hour >= 18 && hour < 24) {
     //evening
     textColour = "#FFFFFF";
   } else if (hour < 6) {

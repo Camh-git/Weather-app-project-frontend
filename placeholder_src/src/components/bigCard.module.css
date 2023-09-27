@@ -14,7 +14,7 @@
   background-color: #f0c987;
 }
 .eveningBackground {
-  background-color: #9C7178;
+  background-color: #9c7178;
 }
 .nightBackground {
   background-color: #1e596f;
@@ -69,6 +69,14 @@ tr {
 }
 .forecast__img {
   width: 10vw;
+}
+.cards__wrapper {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
 }
 
 /*desktop*/

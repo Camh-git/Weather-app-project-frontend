@@ -82,7 +82,10 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
   return (
     <div
       className={styles.bigWeatherCard}
-      style={{ backgroundColor: setBackgroundColour(time.hours) , color: setTextColour(time.hours)}}
+      style={{
+        backgroundColor: setBackgroundColour(time.hours),
+        color: setTextColour(time.hours),
+      }}
     >
       <span className={styles.deleteCard}>
         <img src={deleteIcon} alt="Delete card" onClick={deleteCard} />
