@@ -20,7 +20,7 @@ function findDayName(dayNum: number): string {
       dayName = "Friday";
       break;
     case 6:
-      dayName = "Staurday";
+      dayName = "Saturday";
       break;
     case 7:
       dayName = "Sunday";
