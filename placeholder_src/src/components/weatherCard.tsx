@@ -3,7 +3,7 @@ import React from "react";
 import deleteIcon from "../assets/app_icons/close_black_24dp.svg";
 import findDayName from "../functions/convertDayNumToName";
 import findWeatherIcon from "../functions/findWeatherIcon";
-import styles from "./bigCard.module.css";
+import styles from "./weatherCard.module.css";
 import { useState, useEffect } from "react";
 import setBackgroundColour from "../functions/getBackgroundColour";
 import setTextColour from "../functions/getTextColour";
@@ -112,48 +112,25 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
       <section className={styles.forecast}>
         <table>
           <tbody>
-            <tr>
-              <td>{findDayName(day.getDay() + 1)}</td>
-              <td>
-                {foreCasts[0].low_air_temperature}° -{" "}
-                {foreCasts[0].high_air_temperature}°
-              </td>
-              <td>
-                <img
-                  className={styles.forecast__img}
-                  src={findWeatherIcon(foreCasts[0].symbol_code)}
-                  alt="Prediction"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>{findDayName(day.getDay() + 2)}</td>
-              <td>
-                {foreCasts[1].low_air_temperature}° -{" "}
-                {foreCasts[1].high_air_temperature}°
-              </td>
-              <td>
-                <img
-                  className={styles.forecast__img}
-                  src={findWeatherIcon(foreCasts[1].symbol_code)}
-                  alt="Prediction"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>{findDayName(day.getDay() + 3)}</td>
-              <td>
-                {foreCasts[2].low_air_temperature}° -{" "}
-                {foreCasts[2].high_air_temperature}°
-              </td>
-              <td>
-                <img
-                  className={styles.forecast__img}
-                  src={findWeatherIcon(foreCasts[2].symbol_code)}
-                  alt="Prediction"
-                />
-              </td>
-            </tr>
+            {foreCasts.map((index) => {
+              return (
+                <tr>
+                  <td>
+                    {findDayName(day.getDay() + foreCasts.indexOf(index) + 1)}
+                  </td>
+                  <td>
+                    {index.low_air_temperature}° - {index.high_air_temperature}°
+                  </td>
+                  <td>
+                    <img
+                      className={styles.forecast__img}
+                      src={findWeatherIcon(index.symbol_code)}
+                      alt="Prediction"
+                    />
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </section>

@@ -1,7 +1,7 @@
 import WeatherCard from "./weatherCard";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import styles from "./bigCard.module.css";
+import styles from "./weatherCard.module.css";
 import AddCard from "./addCard";
 
 function CardList(): JSX.Element {
