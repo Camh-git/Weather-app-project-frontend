@@ -1,4 +1,4 @@
-function findWeatherIcon(icon: string): string {
+function findWeatherIcon(icon: string | null): string {
   //On a more advanced version maybe these images would be stored on the server and sent with the api call to save how much we send the user?
   switch (icon) {
     case "clearsky_day":

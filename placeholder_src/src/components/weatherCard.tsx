@@ -16,37 +16,33 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
   function deleteCard() {} //placeholder
 
   //State used by the card
-  const [city, setLocation] = useState({
-    name: "Loading...",
-    country: "Loading...",
-  });
-  const [weather, setWeather] = useState({
-    icon: "Loading...",
-    temperature: "0",
-  });
+  const [city, setLocation] = useState({ name: null, country: null });
+  const [weather, setWeather] = useState({ icon: null, temperature: null });
   const [time, setTime] = useState({
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
-  const [forecast1, setForecast1] = useState({
-    time: 0,
-    high_air_temperature: 0,
-    low_air_temperature: 0,
-    symbol_code: "",
-  });
-  const [forecast2, setForecast2] = useState({
-    time: 0,
-    high_air_temperature: 0,
-    low_air_temperature: 0,
-    symbol_code: "",
-  });
-  const [forecast3, setForecast3] = useState({
-    time: 0,
-    high_air_temperature: 0,
-    low_air_temperature: 0,
-    symbol_code: "",
-  });
+  const [foreCasts, setForeCasts] = useState([
+    {
+      time: 0,
+      high_air_temperature: 0,
+      low_air_temperature: 0,
+      symbol_code: "",
+    },
+    {
+      time: 0,
+      high_air_temperature: 0,
+      low_air_temperature: 0,
+      symbol_code: "",
+    },
+    {
+      time: 0,
+      high_air_temperature: 0,
+      low_air_temperature: 0,
+      symbol_code: "",
+    },
+  ]);
 
   //useeffect to get the api data
   useEffect(() => {
@@ -70,9 +66,11 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
         minutes: data.localTime.minute,
         seconds: data.localTime.seconds,
       });
-      setForecast1(data.weatherInformation.timeseries[0]);
-      setForecast2(data.weatherInformation.timeseries[1]);
-      setForecast3(data.weatherInformation.timeseries[2]);
+      setForeCasts([
+        data.weatherInformation.timeseries[0],
+        data.weatherInformation.timeseries[1],
+        data.weatherInformation.timeseries[2],
+      ]);
     };
     fetchForecast();
   }, []);
@@ -117,13 +115,13 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
             <tr>
               <td>{findDayName(day.getDay() + 1)}</td>
               <td>
-                {forecast1.low_air_temperature}° -{" "}
-                {forecast1.high_air_temperature}°
+                {foreCasts[0].low_air_temperature}° -{" "}
+                {foreCasts[0].high_air_temperature}°
               </td>
               <td>
                 <img
                   className={styles.forecast__img}
-                  src={findWeatherIcon(forecast1.symbol_code)}
+                  src={findWeatherIcon(foreCasts[0].symbol_code)}
                   alt="Prediction"
                 />
               </td>
@@ -131,13 +129,13 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
             <tr>
               <td>{findDayName(day.getDay() + 2)}</td>
               <td>
-                {forecast2.low_air_temperature}° -{" "}
-                {forecast2.high_air_temperature}°
+                {foreCasts[1].low_air_temperature}° -{" "}
+                {foreCasts[1].high_air_temperature}°
               </td>
               <td>
                 <img
                   className={styles.forecast__img}
-                  src={findWeatherIcon(forecast2.symbol_code)}
+                  src={findWeatherIcon(foreCasts[1].symbol_code)}
                   alt="Prediction"
                 />
               </td>
@@ -145,13 +143,13 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
             <tr>
               <td>{findDayName(day.getDay() + 3)}</td>
               <td>
-                {forecast3.low_air_temperature}° -{" "}
-                {forecast3.high_air_temperature}°
+                {foreCasts[2].low_air_temperature}° -{" "}
+                {foreCasts[2].high_air_temperature}°
               </td>
               <td>
                 <img
                   className={styles.forecast__img}
-                  src={findWeatherIcon(forecast3.symbol_code)}
+                  src={findWeatherIcon(foreCasts[2].symbol_code)}
                   alt="Prediction"
                 />
               </td>
