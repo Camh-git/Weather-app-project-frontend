@@ -1,7 +1,8 @@
-import WeatherCard from "./bigCard";
+import WeatherCard from "./weatherCard";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./bigCard.module.css";
+import AddCard from "./addCard";
 
 function CardList(): JSX.Element {
   // load in persistant data to the array
@@ -33,6 +34,7 @@ function CardList(): JSX.Element {
             <WeatherCard key={uuidv4()} Location={weatherCardLocation} />
           );
         })}
+        <AddCard />
       </div>
     </main>
   );

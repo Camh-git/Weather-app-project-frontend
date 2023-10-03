@@ -55,7 +55,7 @@ const WeatherCard: React.FC<Location> = (props: Location) => {
         `http://localhost:3000/weather/?cityName=${props.Location}`
       );
       const data = await result.json();
-      console.log(data);
+      //console.log(data);
       setLocation({
         name: data.geoLocation.name,
         country: data.geoLocation.country,

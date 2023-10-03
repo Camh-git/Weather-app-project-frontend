@@ -1,6 +1,6 @@
 import React from "react";
 
-import WeatherCard from "./components/bigCard";
+import WeatherCard from "./components/weatherCard";
 import CardList from "./components/cardList";
 
 function App() {

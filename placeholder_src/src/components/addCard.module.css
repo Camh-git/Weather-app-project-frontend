@@ -4,7 +4,7 @@
   align-items: center;
   width: 80vw;
   padding: 5vw;
-  max-height: 100vh;
+  max-height: 72.5vh;
 }
 .addCard__h2 {
   margin-top: 5vh;
@@ -25,7 +25,6 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 1vh;
 }
 .addCard_link {
   text-decoration: none;
